@@ -1,5 +1,5 @@
 Non-Commercial Use License
-Copyright (c) [Year] [Your Name]
+Copyright (c) [2025] [DIY Yari]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software (the "Software") to use, copy, modify, merge, publish, and distribute the Software for non-commercial purposes only, provided that the following conditions are met:
 
