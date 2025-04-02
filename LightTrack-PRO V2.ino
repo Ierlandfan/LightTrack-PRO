@@ -281,19 +281,8 @@ void handleToggleBackgroundMode() {
 void handleSetFadeWidth() {
   if (server.hasArg("value")) { 
     fadeWidth = server.arg("value").toInt();
-    // Устанавливаем разумное ограничение на ширину градиента
-    if (movingLength > 1) {
-      fadeWidth = min(fadeWidth, movingLength / 3);
-    } else {
-      // Если основной свет = 1, используем ограничение на основе дополнительных светодиодов
-      if (additionalLEDs > 0) {
-        fadeWidth = min(fadeWidth, max(1, additionalLEDs / 3));
-      } else {
-        fadeWidth = 1; // Минимальное значение
-      }
-    }
+    fadeWidth = min(fadeWidth, movingLength / 3); // Limit maximum gradient width
   }
-  saveSettings();
   server.sendHeader("Location", "/");
   server.send(303);
 }
@@ -466,6 +455,7 @@ void ledTask(void * parameter) {
     vTaskDelay(pdMS_TO_TICKS(updateInterval));
   }
 }
+
 // ------------------------- Debug Task -------------------------
 void debugTask(void * parameter) {
   for (;;) {
