@@ -45,6 +45,7 @@ void initStorage() {
   // Load WiFi settings
   wifi_ssid = preferences.getString("wifi_ssid", "");
   wifi_password = preferences.getString("wifi_password", "");
+//Added to avoid [E][Preferences.cpp:483] getString(): nvs_get_str len fail: wifi_ssid (etc.) NOT_FOUND after first boot
   if (wifi_ssid.isEmpty() || wifi_password.isEmpty()) {
     Serial.println("WiFi settings not found, saving defaults.");
     saveWiFiSettings("MySSID", "MyPass");
@@ -55,6 +56,7 @@ void initStorage() {
   mqtt_port = preferences.getInt("mqtt_port", 1883);
   mqtt_user = preferences.getString("mqtt_user", "");
   mqtt_password = preferences.getString("mqtt_password", "");
+//Added to avoid [E][Preferences.cpp:483] getString(): nvs_get_str len fail: mqtt_server (etc.)  NOT_FOUND after first boot
   if (mqtt_server.isEmpty()) {
     Serial.println("MQTT settings not found, saving defaults.");
     saveMqttSettings("192.168.1.100", 1883, "user", "pass");
